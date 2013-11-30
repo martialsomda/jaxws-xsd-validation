@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <artifactId>jaxws-xsd-validation</artifactId>
+    <groupId>fr.msomda.blog</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>fr.msomda.blog</groupId>
+  <artifactId>jaxws-xsd-validation-ear</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>ear</packaging>
+
+  <name>jaxws-xsd-validation-ear</name>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ear-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+            <version>6</version>
+            <defaultLibBundleDir>APP-INF/lib</defaultLibBundleDir>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+    <dependencies>
+        <dependency>
+            <groupId>fr.msomda.blog</groupId>
+            <artifactId>jaxws-xsd-validation-ejb</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+    </dependencies>
+</project>

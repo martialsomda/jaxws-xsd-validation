@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://blog.msomda.fr/javaee/jaxws"
+           targetNamespace="http://blog.msomda.fr/javaee/jaxws"
+           elementFormDefault="qualified">
+
+    <xs:element name="AppicationsInfoRequest">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="tns:AppicationsInfoRequestType" />
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AppicationsInfoResponse">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="tns:AppicationsInfoResponseType" />
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ApplicationStoreFault">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="tns:ApplicationStoreFaultType" />
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:complexType name="ApplicationStoreFaultType">
+        <xs:sequence>
+            <xs:element name="code" type="xs:string" /> 
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+        
+    <xs:complexType name="AppicationsInfoRequestType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" /> 
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="AppicationsInfoResponseType">
+        <xs:sequence>
+            <xs:element name="application" type="tns:ApplicationType" minOccurs="0" maxOccurs="unbounded" /> 
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="ApplicationType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" /> 
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="details" type="tns:ApplicationDetailsType" />
+            <xs:element name="screenshotUrl" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="ApplicationDetailsType">
+        <xs:sequence>
+            <xs:element name="categogory" type="xs:string" /> 
+            <xs:element name="applicationSize" type="xs:long"/>
+            <xs:element name="version" type="xs:string" />
+            <xs:element name="lastUpdate" type="xs:date" />
+            <xs:element name="stars" type="xs:int" />
+            <xs:element name="developper" type="tns:ApplicationDevelopperType" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="ApplicationDevelopperType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" /> 
+            <xs:element name="address" type="tns:AddressType"/>
+            <xs:element name="website" type="xs:string" />
+            <xs:element name="image" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="AddressType">
+        <xs:sequence>
+            <xs:element name="street" type="xs:string" /> 
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="country" type="xs:string" />
+            <xs:element name="zipCode" type="tns:ZipCodeType" />
+            <xs:element name="landPhone" type="tns:LandPhoneType" />
+            <xs:element name="email" type="tns:EmailType" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="ZipCodeType">
+        <xs:restriction base="xs:long">
+            <xs:pattern value="[0-9]{5}" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="LandPhoneType">
+        <xs:restriction base="xs:long">
+            <xs:pattern value="[0-9]{10}" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="EmailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

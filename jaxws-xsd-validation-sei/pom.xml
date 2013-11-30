@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>jaxws-xsd-validation</artifactId>
+        <groupId>fr.msomda.blog</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>fr.msomda.blog</groupId>
+    <artifactId>jaxws-xsd-validation-sei</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>jaxws-xsd-validation-sei</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <target>2.2</target>
+                    <verbose>true</verbose>
+                    <wsdlLocation>wsdl/*</wsdlLocation>
+                    <wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>                    
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>wsimport</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

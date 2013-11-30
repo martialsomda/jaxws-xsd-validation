@@ -1,0 +1,57 @@
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+                  xmlns:tns="http://blog.msomda.fr/javaee/jaxws" 
+                  xmlns:types="http://blog.msomda.fr/javaee/jaxws"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+                  xmlns:s="http://www.w3.org/2001/XMLSchema" 
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+                  targetNamespace="http://blog.msomda.fr/javaee/jaxws">
+    <!-- Types -->
+    <wsdl:types>
+        <s:schema>
+            <s:import namespace="http://blog.msomda.fr/javaee/jaxws" schemaLocation="../xsd/application-store.xsd" />
+        </s:schema>
+    </wsdl:types>
+    <!-- Messages -->
+    <wsdl:message name="GetAppicationsInfoRequest">
+        <wsdl:part name="parameters" element="tns:AppicationsInfoRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAppicationsInfoResponse">
+        <wsdl:part name="parameters" element="tns:AppicationsInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetAppicationsInfoFault">
+        <wsdl:part name="parameters" element="tns:ApplicationStoreFault"/>
+    </wsdl:message>
+    <!-- Port Types -->
+    <wsdl:portType name="ApplicationStorePortType">
+        <wsdl:operation name="getAppicationsInfo">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get information about applications available in the store</wsdl:documentation>
+            <wsdl:input message="tns:GetAppicationsInfoRequest"/>
+            <wsdl:output message="tns:GetAppicationsInfoResponse"/>
+            <wsdl:fault name="fault" message="tns:GetAppicationsInfoFault" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <!-- Bindings -->
+    <wsdl:binding name="ApplicationStoreBinding" type="tns:ApplicationStorePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getAppicationsInfo">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault name="fault" use="literal" /> 
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <!-- Services -->
+    <wsdl:service name="ApplicationStoreWS">
+        <wsdl:port name="ApplicationStorePort" binding="tns:ApplicationStoreBinding">
+            <soap:address location="TARGET_ENDPOINT_ADDRESS"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

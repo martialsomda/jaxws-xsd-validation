@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application version="5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd">
+  <display-name>xsd-validation-ear</display-name>
+  <module>
+    <ejb>jaxws-xsd-validation-ejb-1.0-SNAPSHOT.jar</ejb>
+  </module>
+</application>
