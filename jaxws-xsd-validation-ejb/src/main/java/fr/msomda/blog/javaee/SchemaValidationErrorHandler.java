@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package com.jcertif.javaee;
+package fr.msomda.blog.javaee;
 
 import com.sun.xml.ws.developer.ValidationErrorHandler;
 import org.xml.sax.SAXException;

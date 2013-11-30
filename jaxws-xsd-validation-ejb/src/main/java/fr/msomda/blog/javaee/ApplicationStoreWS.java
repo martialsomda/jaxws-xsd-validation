@@ -1,4 +1,4 @@
-package com.jcertif.javaee;
+package fr.msomda.blog.javaee;
 
 
 import com.sun.xml.ws.developer.SchemaValidation;
@@ -23,16 +23,17 @@ import org.xml.sax.SAXParseException;
         portName = "ApplicationStorePort")
 @Stateless
 @SchemaValidation(handler=SchemaValidationErrorHandler.class)
+//@HandlerChain(file = "handlers.xml")
 public class ApplicationStoreWS implements ApplicationStorePortType {
 
-     @Resource  
-     WebServiceContext wsContext;  
+    @Resource  
+    WebServiceContext webServiceContext;  
      
-     @Override
+    @Override
     public AppicationsInfoResponse getAppicationsInfo(AppicationsInfoRequest parameters) throws GetAppicationsInfoFault {
         System.out.println(parameters.getName());
         
-        SAXParseException validationError = (SAXParseException)wsContext.getMessageContext().get(SchemaValidationErrorHandler.ERROR); 
+        SAXParseException validationError = (SAXParseException)webServiceContext.getMessageContext().get(SchemaValidationErrorHandler.ERROR); 
         
         if (validationError != null){
            GetAppicationsInfoFault fault = new GetAppicationsInfoFault(validationError.getMessage(), new ApplicationStoreFault());
@@ -42,5 +43,5 @@ public class ApplicationStoreWS implements ApplicationStorePortType {
         AppicationsInfoResponse response = new AppicationsInfoResponse();
         return response;
     }
-
+    
 }

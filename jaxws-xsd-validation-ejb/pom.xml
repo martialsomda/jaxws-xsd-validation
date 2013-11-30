@@ -29,7 +29,7 @@
         <dependency>
             <groupId>fr.msomda.blog</groupId>
             <artifactId>jaxws-xsd-validation-sei</artifactId>
-            <version>${project.version}</version>
+            <version>1.0-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
     </dependencies>

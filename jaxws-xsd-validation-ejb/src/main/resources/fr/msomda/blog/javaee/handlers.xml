@@ -3,7 +3,7 @@
    <handler-chain> 
       <handler> 
          <handler-class>
-            com.jcertif.javaee.XSDValidationHandler
+            fr.msomda.blog.javaee.XSDValidationHandler
          </handler-class> 
       </handler> 
    </handler-chain> 
